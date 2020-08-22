@@ -14,7 +14,6 @@ sudo dpkg -i libjpeg-turbo-official_2.0.0_amd64.deb
 sudo dpkg -i turbovnc_2.1.91_amd64.deb
 
 rm libjpeg-turbo-official_2.0.0_amd64.deb turbovnc_2.1.91_amd64.deb
-
 echo "----------------Finished--------------"
 echo "NOW,  you can run games remotely using ./start_game.sh in each game folder after connecting to TurboVNC server"
 echo "Check TurboVNC:"

@@ -3,18 +3,17 @@
 # Author: Tianyi Liu
 # Email : tianyi.liu@utsa.edu
 
+sudo dpkg -r turbovnc
+sudo dpkg -r virtualgl
+sudo rm /opt/libjpeg-turbo -rf
+
+wget https://sourceforge.net/projects/libjpeg-turbo/files/2.0.0/libjpeg-turbo-official_2.0.0_amd64.deb
+sudo dpkg -i libjpeg-turbo-official_2.0.0_amd64.deb
+rm libjpeg-turbo-official_2.0.0_amd64.deb
+
 echo "Downloading Benchmarking Platform: benchvirtualgl & benchvnc ..."
 git clone https://github.com/cloud-graphics-rendering/benchvirtualgl-pictor.git
 git clone https://github.com/cloud-graphics-rendering/benchturbovnc-pictor.git
-echo "setup and build benchvirtualgl"
-cd benchvirtualgl-pictor
-./setup.sh
-./build64.sh
-echo "setup and build benchvnc"
-cd ../benchturbovnc-pictor
-./setup.sh
-./build64.sh
-cd ../
 
 mkdir benchmarksuite && cd benchmarksuite
 export CGR_BENCHMARK_PATH=`pwd`
@@ -54,14 +53,19 @@ echo "----------Configuration Done!!--------------"
 
 echo " "
 echo "Now, you can enter each folder and run games locally using ./start_game_real.sh"
-echo "OR,  you can enter each folder and run games remotely (in cloud) using ./start_game.sh using TurboVNC client"
-echo "First, launch TurboVNC server"
+echo "OR,  you can enter each folder and run games remotely (in cloud) using ./start_game.sh using TurboVNC"
+
+echo ""
+echo "First, compile VirtualGL and TurboVNC"
+echo "cd benchvirtualgl-pictor and run ./build64.sh "
+echo "cd benchturbovnc-pictor and run ./build64.sh "
+
+echo "Second, launch TurboVNC server"
 echo "1. set passwd on server."
 echo "   (server)$ /opt/TurboVNC/bin/vncpasswd"
 echo "2. launch a session on server."
 echo "   (server)$ /opt/TurboVNC/bin/vncserver"
 
-echo "Second, run client_setup.sh on client machine"
-
+echo "Third, run client_setup.sh on client machine"
 
 echo "ATTENTION: Since DoTA2 and Inmind VR are closed-source, you should download it from steam by yourself on Linux, and then copy to dota2 and inmindvr folders"
