@@ -8,7 +8,7 @@ sudo dpkg -r turbovnc
 sudo rm /opt/libjpeg-turbo -rf
 
 wget https://sourceforge.net/projects/libjpeg-turbo/files/2.0.0/libjpeg-turbo-official_2.0.0_amd64.deb
-wget https://github.com/cloud-graphics-rendering/benchturbovnc-release/blob/master/turbovnc_2.1.91_amd64.deb
+wget https://github.com/cloud-graphics-rendering/benchturbovnc-pictor/blob/master/turbovnc_2.1.91_amd64.deb
 
 sudo dpkg -i libjpeg-turbo-official_2.0.0_amd64.deb
 sudo dpkg -i turbovnc_2.1.91_amd64.deb

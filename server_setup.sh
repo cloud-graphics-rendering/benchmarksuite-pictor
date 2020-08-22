@@ -4,14 +4,14 @@
 # Email : tianyi.liu@utsa.edu
 
 echo "Downloading Benchmarking Platform: benchvirtualgl & benchvnc ..."
-git clone https://github.com/cloud-graphics-rendering/benchvirtualgl.git
-git clone https://github.com/cloud-graphics-rendering/benchvnc.git
+git clone https://github.com/cloud-graphics-rendering/benchvirtualgl-pictor.git
+git clone https://github.com/cloud-graphics-rendering/benchturbovnc-pictor.git
 echo "setup and build benchvirtualgl"
-cd benchvirtualgl
+cd benchvirtualgl-pictor
 ./setup.sh
 ./build64.sh
 echo "setup and build benchvnc"
-cd ../benchvnc
+cd ../benchturbovnc-pictor
 ./setup.sh
 ./build64.sh
 cd ../
