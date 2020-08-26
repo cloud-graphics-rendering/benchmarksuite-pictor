@@ -146,12 +146,19 @@ if [ $associateFlag -eq 1 ] ; then
     rm $RESULT_DIR/*
 fi
 
-[ -r ./$APP_NAME ] || (echo "Application name NOT correct\n" && exit 1)
+#[ -r ./$APP_NAME ] || (echo "Application name NOT correct\n" && exit 1)
 
 echo "Running Time: $RUNNING_TIME seconds"
 echo "Count: $COUNT"
 echo "running.."
-cd ./$APP_NAME
+
+if [ $APP_NAME = "supertuxkart-1" ] ; then
+    cd ./supertuxkart
+else
+    [ -r ./$APP_NAME ] || (echo "Application name NOT correct\n" && exit 1)
+    cd ./$APP_NAME
+fi
+
 rm /tmp/source_engine_2808995433.lock
 if [ $associateFlag -eq 1 ] ; then
     ./start_game.sh 2>$RESULT_DIR/${APP_NAME}_fps.log &
@@ -164,6 +171,8 @@ sleep 5
 if [ $APP_NAME = "redeclipse" ] ; then
     ps -C redeclipse_linux -o pid= > $RESULT_DIR/game.pid
 elif [ $APP_NAME = "supertuxkart" ] ; then
+    ps -C supertuxkart -o pid= > $RESULT_DIR/game.pid
+elif [ $APP_NAME = "supertuxkart-1" ] ; then
     ps -C supertuxkart -o pid= > $RESULT_DIR/game.pid
 elif [ $APP_NAME = "0ad" ] ; then
     ps -C pyrogenesis -o pid= > $RESULT_DIR/game.pid
