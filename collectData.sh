@@ -91,13 +91,13 @@ echo "vglrun ./start_game_real.sh --screensize=1920x1080" > ./start_game_1.sh
 
 if [ $RecordFlag -eq 1 ] ; then
     if [ $APP_NAME = "supertuxkart-1" ] ; then
-        ./start_game_1.sh 2>$RESULT_DIR/${APP_NAME}_fps.log &
+        sh ./start_game_1.sh 2>$RESULT_DIR/${APP_NAME}_fps.log &
     else
         ./start_game.sh 2>$RESULT_DIR/${APP_NAME}_fps.log &
     fi
 else
     if [ $APP_NAME = "supertuxkart-1" ] ; then
-        ./start_game_1.sh &
+        sh ./start_game_1.sh &
     else
         ./start_game.sh &
     fi
