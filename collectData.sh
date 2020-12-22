@@ -20,7 +20,7 @@ usage(){
      echo "                        2 -- run 2 games..."
      echo "                        3 -- run 3 games..."
      echo "                        4 -- run 4 games..."
-     echo "e.g: ./collectData.sh supertuxkart 1 100 0 0 0"
+     echo "e.g: ./collectData.sh supertuxkart 1 100 0 0 1"
      exit 0
 }
 ################ Monitoring ###################
@@ -93,13 +93,13 @@ if [ $RecordFlag -eq 1 ] ; then
     if [ $APP_NAME = "supertuxkart-1" ] ; then
         sh ./start_game_1.sh 2>$RESULT_DIR/${APP_NAME}_fps.log &
     else
-        ./start_game.sh 2>$RESULT_DIR/${APP_NAME}_fps.log &
+        taskset 0xe0 ./start_game.sh 2>$RESULT_DIR/${APP_NAME}_fps.log &
     fi
 else
     if [ $APP_NAME = "supertuxkart-1" ] ; then
         sh ./start_game_1.sh &
     else
-        ./start_game.sh &
+        taskset 0xe0 ./start_game.sh &
     fi
 fi
 sleep 5
