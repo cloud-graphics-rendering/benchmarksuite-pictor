@@ -138,7 +138,7 @@ networkcards=`ifconfig | grep -P '^[^\s]+\s+[A-Z]' | awk '{print $1}'`
 echo $networkcards > $RESULT_DIR/networkcards_name.log
 num=$COUNT
 
-if [ $MULTIPLE_MODE -eq 0 ] ; then
+if [ $MULTIPLE_MODE -eq 0 -o $MULTIPLE_MODE -eq 1 ] ; then
     echo -en `ps -C Xvnc -o pid=` > ./Xvnc.pid
     GamePID=`echo $gamepids | awk '{$1=$1};1'`
     XvncPID=`tail -1 ./Xvnc.pid | awk '{$1=$1};1'`
@@ -159,6 +159,7 @@ if [ $MULTIPLE_MODE -eq 0 ] ; then
     done
     kill $GamePID
     cp /tmp/vgl/$GamePID $RESULT_DIR/serverfps_swapbuffer_time.log
+    cp /tmp/vgl/$XvncPID $RESULT_DIR/vnc_fps.log
 else
     GamePID=`cat $RESULT_DIR/game.keypid | awk '{$1=$1};1'`
     while [ $num -gt 0 ]; do
